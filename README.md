@@ -4,11 +4,8 @@ A Discord music bot by MoonShinkiro
 ## Running
 1. Acquire and copy your own bot token from https://discord.com/developers/applications/ and check ```bot``` and ```applications.commands``` from OAuth2 section. Make sure to add your bot to your server as well.
 2. Open/edit the .env file and paste your bot token to ```TOKEN=```
-2. In the folder where /raiko is located, run a terminal line with:
-```node index.js load```
-To load the commands into the bot, follow this step with
-```node index.js```
-To activate the bot.
+3. In the folder where /raiko is located, run a terminal line with: ```node index.js load```
+4. To load the commands into the bot, follow this step with: ```node index.js``` To activate the bot.
 
 ## Commands
 ```/play song``` Queues a single song from a specific given link from Youtube/Spotify/Soundcloud.
