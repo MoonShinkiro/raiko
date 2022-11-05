@@ -1,3 +1,3 @@
 # raiko
-## music bot by MoonShinkiro
+## Discord music bot by MoonShinkiro
 
