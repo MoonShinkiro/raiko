@@ -1,2 +1,3 @@
-# raiko music bot by MoonShinkiro
+# raiko
+## music bot by MoonShinkiro
 
