@@ -1,5 +1,5 @@
-# raiko
-## Discord music bot by MoonShinkiro
+# Raiko Horikawa
+A Discord music bot by MoonShinkiro
 
 ## Running
 1. Acquire and copy your own bot token from https://discord.com/developers/applications/ and check ```bot``` and ```applications.commands``` from OAuth2 section. Make sure to add your bot to your server as well.
