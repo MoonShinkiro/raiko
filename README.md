@@ -12,6 +12,7 @@ A Discord music bot by MoonShinkiro
 4. To load the commands into the bot, follow this step with: ```node index.js``` To activate the bot.
 
 ## Commands
+- ```/help``` Lists all commands and contact information for support.
 - ```/play song``` Queues a single song from a specific given link from Youtube/Spotify/Soundcloud.
 - ```/play search``` Searches for a song from youtube and adds to queue.
 - ```/play playlist``` Queues all songs from a playlist link from Youtube/Spotify/Soundcloud.
