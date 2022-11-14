@@ -19,7 +19,7 @@ module.exports = {
 			embeds: [new EmbedBuilder()
             .setThumbnail(song.thumbnail)
             .setDescription(`Currently Playing [${song.title}](${song.url})\n\n` + bar)
-	    .setFooter({ text: `Duration: ${song.duration}`})
+			.setFooter({ text: `Duration: ${song.duration}`})
         ],
 		})
 	},
