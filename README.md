@@ -1,5 +1,5 @@
 # Raiko Horikawa
-A Discord music bot by MoonShinkiro
+A Discord music bot by MoonShinkiro \n
 Discord support server: https://discord.gg/ZJ3vZMU5tu
 
 
