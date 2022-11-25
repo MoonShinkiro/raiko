@@ -8,6 +8,6 @@ module.exports = {
 		if (!queue) return await interaction.editReply("There are no songs in the queue")
 
 		queue.destroy()
-        await interaction.editReply("Until next performance.")
+        await interaction.editReply("Until next performance~♪")
 	},
 }
