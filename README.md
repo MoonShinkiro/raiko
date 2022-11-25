@@ -1,5 +1,6 @@
 # Raiko Horikawa
-A Discord music bot by MoonShinkiro
+A Discord music bot by MoonShinkiro  
+**Join the Discord support server:** https://discord.gg/ZJ3vZMU5tu
 
 
 <img src=https://images-ext-2.discordapp.net/external/ecljwsepdx9V8XP2IRcm3GJBCtKx8ZIn-2NVeX9ejdU/https/cdn.donmai.us/original/25/11/2511521e84fac34aa8ed8008d9c642f1.png width=40% height=40%>
@@ -12,6 +13,7 @@ A Discord music bot by MoonShinkiro
 4. To load the commands into the bot, follow this step with: ```node index.js``` To activate the bot.
 
 ## Commands
+- ```/help``` Lists all commands and contact information for support.
 - ```/play song``` Queues a single song from a specific given link from Youtube/Spotify/Soundcloud.
 - ```/play search``` Searches for a song from youtube and adds to queue.
 - ```/play playlist``` Queues all songs from a playlist link from Youtube/Spotify/Soundcloud.
