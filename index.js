@@ -5,13 +5,15 @@ const { REST } = require("@discordjs/rest")
 const { Routes } = require("discord-api-types/v9")
 const fs = require("fs")
 const { Player } = require("discord-player")
+const { EmbedBuilder } = require('discord.js');
 
 dotenv.config()
+
 const TOKEN = process.env.TOKEN
 
 const LOAD_SLASH = process.argv[2] == "load"
 
-const CLIENT_ID = "1038948001282003055"
+const CLIENT_ID = "1037203167311573042"
 
 const client = new Client({
     intents: [
@@ -19,6 +21,8 @@ const client = new Client({
         GatewayIntentBits.GuildVoiceStates,
     ]
 })
+
+const player = new Player(client);
 
 client.slashcommands = new Discord.Collection()
 client.player = new Player(client, {
@@ -36,6 +40,16 @@ for (const file of slashFiles){
     client.slashcommands.set(slashcmd.data.name, slashcmd)
     if (LOAD_SLASH) commands.push(slashcmd.data.toJSON())
 }
+
+const clients = new Client({
+    intents: [
+        "Guilds",
+        "GuildVoiceStates",
+        "GuildMessages",
+        "MessageContent",
+        "GuildMembers"
+    ]
+})
 
 if (LOAD_SLASH) {
     const rest = new REST({ version: "9" }).setToken(TOKEN)

@@ -8,8 +8,8 @@ module.exports = {
     .addNumberOption((option) => option.setName("page").setDescription("Page number of the queue").setMinValue(1)),
 
     run: async ({ client, interaction }) => {
-        const queue = client.player.getQueue(interaction.guildId)
-        if (!queue || !queue.playing){
+        const queue = await client.player.nodes.create(interaction.guild)
+        if (!queue || !queue.node.isPlaying){
             return await interaction.editReply("There are no songs in the queue")
         }
 
@@ -23,7 +23,7 @@ module.exports = {
             return `**${page * 10 + i + 1}.** \`[${song.duration}]\` ${song.title} -- <@${song.requestedBy.id}>`
         }).join("\n")
 
-        const currentSong = queue.current
+        const currentSong = queue.currentTrack
 
         await interaction.editReply({
             embeds: [

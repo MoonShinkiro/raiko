@@ -10,7 +10,7 @@ module.exports = {
 			subcommand
 				.setName("song")
 				.setDescription("Loads a single song from a url")
-				.addStringOption((option) => option.setName("url").setDescription("the song's url").setRequired(true))
+				.addStringOption((option) => option.setName("url").setDescription("Write search terms or a song url").setRequired(true))
 		)
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -30,7 +30,8 @@ module.exports = {
 		if (!interaction.member.voice.channel) 
             return interaction.editReply("You need to be in a VC to use this command")
 
-		const queue = await client.player.createQueue(interaction.guild, {leaveOnEmpty: false, leaveOnEnd: false}) 
+		const queue = await client.player.nodes.create(interaction.guild,{leaveOnEmpty: true, leaveOnEmptyCooldown: 100000, leaveOnEnd: true, leaveOnEndCooldown: 100000,})
+
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
 
 		let embed = new EmbedBuilder()
@@ -60,9 +61,9 @@ module.exports = {
 
             if (result.tracks.length === 0)
                 return interaction.editReply("No results")
-            if (TypeError) return await interaction.editReply("Invalid playlist link, try not to use auto-generated playlist links.")
+
             const playlist = result.playlist
-            await queue.addTracks(result.tracks)
+            await queue.addTrack(result.tracks)
             embed
                 .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue`)
 		} else if (interaction.options.getSubcommand() === "search") {
@@ -82,7 +83,7 @@ module.exports = {
                 .setThumbnail(song.thumbnail)
                 .setFooter({ text: `Duration: ${song.duration}`})
 		}
-        if (!queue.playing) await queue.play()
+        if (!queue.node.isPlaying()) await queue.node.play()
         await interaction.editReply({
             embeds: [embed]
         })

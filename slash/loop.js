@@ -5,7 +5,7 @@ module.exports = {
     .addStringOption((option) => option.setName("mode").setDescription("Set the mode between **on** or **off** only.").setRequired(true)),
     run: async ({ client, interaction }) => {
         let mode = null
-        const queue = client.player.getQueue(interaction.guildId)
+        const queue = await client.player.nodes.create(interaction.guild)
 
         if (!queue) {
             await interaction.editReply("No songs in queue to loop")
