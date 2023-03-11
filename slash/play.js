@@ -30,7 +30,7 @@ module.exports = {
 		if (!interaction.member.voice.channel) 
             return interaction.editReply("You need to be in a VC to use this command")
 
-		const queue = await client.player.nodes.create(interaction.guild,{leaveOnEmpty: true, leaveOnEmptyCooldown: 100000, leaveOnEnd: true, leaveOnEndCooldown: 100000,})
+		const queue = await client.player.nodes.create(interaction.guild,{volume: 50, leaveOnEmpty: true, leaveOnEmptyCooldown: 100000, leaveOnEnd: false,})
 
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
 
