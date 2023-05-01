@@ -2,7 +2,7 @@
 A Discord music bot by MoonShinkiro  
 
 
-<img src=https://images-ext-2.discordapp.net/external/ecljwsepdx9V8XP2IRcm3GJBCtKx8ZIn-2NVeX9ejdU/https/cdn.donmai.us/original/25/11/2511521e84fac34aa8ed8008d9c642f1.png width=40% height=40%>
+<img src=https://cdn.discordapp.com/attachments/753303624641150999/1102411250102714378/ushouldfollow1852Arisu.png width=40% height=40%>
 
 
 ## Running
