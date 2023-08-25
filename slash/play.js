@@ -5,11 +5,11 @@ const { QueryType } = require("discord-player")
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("play")
-		.setDescription("Loads songs from youtube")
+		.setDescription("Loads songs from youtube/soundcloud/spotify")
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName("song")
-				.setDescription("Loads a single song from a url")
+				.setDescription("Loads a single song from a url or searches keywords")
 				.addStringOption((option) => option.setName("url").setDescription("Write search terms or a song url").setRequired(true))
 		)
 		.addSubcommand((subcommand) =>
@@ -17,14 +17,6 @@ module.exports = {
 				.setName("playlist")
 				.setDescription("Loads a playlist of songs from a url")
 				.addStringOption((option) => option.setName("url").setDescription("the playlist's url").setRequired(true))
-		)
-		.addSubcommand((subcommand) =>
-			subcommand
-				.setName("search")
-				.setDescription("Searches for song based on provided keywords")
-				.addStringOption((option) =>
-					option.setName("searchterms").setDescription("the search keywords").setRequired(true)
-				)
 		),
 	run: async ({ client, interaction }) => {
 		if (!interaction.member.voice.channel) 

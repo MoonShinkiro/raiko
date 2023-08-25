@@ -12,18 +12,14 @@
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
     "@discordjs/voice": "^0.13.0",
-    "discord-player": "^5.4.0",
+    "discord-music-player": "^9.1.1",
+    "discord-player": "^6.0.0",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "ffmpeg-static": "^5.1.0",
-    "ytdl-core": "^4.11.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MoonShinkiro/raiko.git"
-  },
-  "bugs": {
-    "url": "https://github.com/MoonShinkiro/raiko/issues"
-  },
-  "homepage": "https://github.com/MoonShinkiro/raiko#readme"
+    "opusscript": "^0.0.8",
+    "play-dl": "^1.9.6",
+    "yarn": "^1.22.19",
+    "ytdl-core": "^4.11.5"
+  }
 }
