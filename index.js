@@ -6,6 +6,7 @@ const { Routes } = require("discord-api-types/v9")
 const fs = require("fs")
 const { Player } = require("discord-player")
 const { EmbedBuilder } = require('discord.js');
+const { YoutubeiExtractor } = require("discord-player-youtubei")
 
 dotenv.config()
 
@@ -22,15 +23,21 @@ const client = new Client({
     ]
 })
 
-const player = new Player(client);
-
-client.slashcommands = new Discord.Collection()
-client.player = new Player(client, {
+const player = new Player(client, {
     ytdlOptions: {
         quality: "highestaudio",
         highWaterMark: 1 << 25
     }
+});
+
+player.extractors.register(YoutubeiExtractor, {
+    streamOptions:{
+        useClient:'InnerTubeClient'
+    }
 })
+
+client.slashcommands = new Discord.Collection()
+client.player = player
 
 let commands = []
 
@@ -40,16 +47,6 @@ for (const file of slashFiles){
     client.slashcommands.set(slashcmd.data.name, slashcmd)
     if (LOAD_SLASH) commands.push(slashcmd.data.toJSON())
 }
-
-const clients = new Client({
-    intents: [
-        "Guilds",
-        "GuildVoiceStates",
-        "GuildMessages",
-        "MessageContent",
-        "GuildMembers"
-    ]
-})
 
 if (LOAD_SLASH) {
     const rest = new REST({ version: "9" }).setToken(TOKEN)
