@@ -3,13 +3,14 @@ A Discord music bot by MoonShinkiro
 
 
 ![follow1852Arisu](https://user-images.githubusercontent.com/107448523/235394870-00964e3d-374c-44e6-9548-d1942fd9446f.png)
-Commissioned artwork by 1852Arisu on Twitter, please follow them! https://twitter.com/1852Arisu
 
 ## Running
 1. Acquire and copy your own bot token from https://discord.com/developers/applications/ and check the boxes ```bot``` and ```applications.commands``` from OAuth2 section. Make sure to add your bot to your server as well.
-2. Open/edit the .env file and paste your bot token to ```TOKEN=```
-3. In the folder where /raiko is located, run a terminal line with: ```node index.js load```
-4. To load the commands into the bot, follow this step with: ```node index.js``` To activate the bot.
+2. Run `git clone https://github.com/MoonShinkiro/raiko.git`
+3. Run `npm install`
+4. Open/edit the empty .env file and paste your bot token to ```TOKEN=```
+5. In the folder where /raiko is located, run a terminal line with: ```node index.js load```
+6. To load the commands into the bot, follow this step with: ```node index.js``` to start the bot.
 
 ## Commands
 - ```/help``` Lists all commands and contact information for support.

@@ -1,12 +1,16 @@
+const nodeCrypto = require('node:crypto');
+if (!globalThis.crypto) globalThis.crypto = nodeCrypto.webcrypto;
+if (!global.crypto) global.crypto = nodeCrypto;
+
 const Discord = require("discord.js")
 const { Client, GatewayIntentBits } = require('discord.js')
 const dotenv = require("dotenv")
-const { REST } = require("@discordjs/rest")
-const { Routes } = require("discord-api-types/v9")
+const { REST, Routes } = require("discord.js");
 const fs = require("fs")
 const { Player } = require("discord-player")
 const { EmbedBuilder } = require('discord.js');
-const { YoutubeiExtractor } = require("discord-player-youtubei")
+const { DefaultExtractors } = require("@discord-player/extractor")
+const { YoutubeiExtractor } = require('discord-player-youtubei');
 
 dotenv.config()
 
@@ -24,18 +28,31 @@ const client = new Client({
 })
 
 const player = new Player(client, {
-    ytdlOptions: {
-        quality: "highestaudio",
-        highWaterMark: 1 << 25
-    }
+  ytdlOptions: { quality: 'highestaudio', highWaterMark: 1 << 25 },
+  skipFFmpeg: true
 });
 
-player.extractors.register(YoutubeiExtractor, {
-    streamOptions:{
-        useClient:'InnerTubeClient'
-    }
-})
+process.env.DP_FORCE_YTDL_MOD = 'play-dl';
 
+(async () => {
+  await player.extractors.loadMulti(DefaultExtractors);
+  player.extractors.register(YoutubeiExtractor, {
+    streamOptions: { useClient: 'ANDROID' }
+  });
+})();
+
+player.events.on("playerError", (queue, err) =>
+	console.error(`Player error in server ${queue.guild?.name}`, err)
+);
+
+player.events.on('audioStart',  q => console.log(`Now playing in ${q.guild.name}`));
+player.events.on('audioFinish', q => console.log(`Finished in ${q.guild.name}`));
+player.events.on('debug',      (q, m) => console.log('[debug]', m));
+player.events.on('connectionError', (q, e) => console.error('❌ VC error', e));
+player.events.on('playerStart',(q, t) => console.log('▶️ playerStart', t.url));
+player.events.on('playerFinish',(q, t) => console.log('⏹️ playerFinish', t.url));
+
+  
 client.slashcommands = new Discord.Collection()
 client.player = player
 
